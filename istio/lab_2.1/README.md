@@ -92,7 +92,9 @@ Change `fixDelay` to `7s`, sign-in with `tester` and reload the productpage. The
 
 > Sorry, product reviews are currently unavailable for this book.
 
-Let troubleshoot/investigate to understand what happened.
+🏋️‍♂️ **Chalenge**
+
+Troubleshoot/investigate to understand what happened
 
 ## 1.4 Test with service fault
 
@@ -102,4 +104,4 @@ Deploy [503 error rules](./reviews-v2-tester-503.yaml)
 kubectl apply -f reviews-v2-tester-503.yaml
 ```
 
-> Browse to http://localhost/productpage -  `tester` gets failures
+> Browse to http://localhost/productpage -  `tester` gets failures.
