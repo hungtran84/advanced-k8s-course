@@ -2,7 +2,7 @@
 
 Launch new version of the reviews service which only the test user can see.
 
-## 1.0 Setup
+## 1. Setup
 
 Set the default namespace to `bookinfo`
 
@@ -18,6 +18,7 @@ kubectl apply -f https://raw.githubusercontent.com/istio/istio/master/samples/bo
 ```
 
 ```sh
+$ kubectl apply -f https://raw.githubusercontent.com/istio/istio/master/samples/bookinfo/platform/kube/bookinfo.yaml -l 'account in (reviews,details,ratings,productpage)'
 serviceaccount/bookinfo-details created
 serviceaccount/bookinfo-ratings created
 serviceaccount/bookinfo-reviews created
@@ -29,6 +30,7 @@ kubectl apply -f https://raw.githubusercontent.com/istio/istio/master/samples/bo
 ```
 
 ```sh
+$ kubectl apply -f https://raw.githubusercontent.com/istio/istio/master/samples/bookinfo/platform/kube/bookinfo.yaml -l version=v1
 deployment.apps/details-v1 created
 deployment.apps/ratings-v1 created
 deployment.apps/reviews-v1 created
@@ -40,13 +42,14 @@ kubectl apply -f https://raw.githubusercontent.com/istio/istio/master/samples/bo
 ```
 
 ```sh
+$ kubectl apply -f https://raw.githubusercontent.com/istio/istio/master/samples/bookinfo/platform/kube/bookinfo.yaml -l 'service in (reviews,details,ratings,productpage)'
 service/details created
 service/ratings created
 service/reviews created
 service/productpage created
 ```
 
-## 1.1 Deploy v2
+## 2. Deploy v2
 
 Deploy [v2 reviews service](./reviews-v2.yaml):
 
@@ -64,7 +67,7 @@ kubectl describe svc reviews
 
 > Browse to http://localhost/productpage and refresh, requests load-balanced between v1 and v2
 
-## 1.2 Switch to dark launch
+## 3. Switch to dark launch
 
 Deploy [test user routing rules](./reviews-v2-tester.yaml):
 
@@ -78,7 +81,7 @@ kubectl describe vs reviews
 
 Test sign-in with `tester` user (no password needed for now), reload the website to see v2
 
-## 1.3 Test with network delay
+## 4. Test with network delay
 
 Deploy [delay test rules](./reviews-v2-tester-delay.yaml):
 
@@ -96,7 +99,7 @@ Change `fixDelay` to `7s`, sign-in with `tester` and reload the productpage. The
 
 Troubleshoot/investigate to understand what happened
 
-## 1.4 Test with service fault
+## 5. Test with service fault
 
 Deploy [503 error rules](./reviews-v2-tester-503.yaml)
 
@@ -105,3 +108,10 @@ kubectl apply -f reviews-v2-tester-503.yaml
 ```
 
 > Browse to http://localhost/productpage -  `tester` gets failures.
+
+## 6. Clean up
+
+```sh
+kubectl delete -f reviews-v2-tester-503.yaml
+kubectl apply -f reviews-v2.yaml
+```
