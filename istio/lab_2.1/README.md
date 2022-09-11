@@ -92,7 +92,7 @@ Change `fixDelay` to `7s`, sign-in with `tester` and reload the productpage. The
 
 > Sorry, product reviews are currently unavailable for this book.
 
-🏋️‍♂️ **Chalenge**
+🏋️‍♂️ **Challenge**
 
 Troubleshoot/investigate to understand what happened
 
