@@ -101,10 +101,9 @@ kubectl describe vs bookinfo-test
 
 Deploy [live to test switch](./productpage-live-to-test.yaml)
 
-```
+```sh
 kubectl apply -f productpage-live-to-test.yaml
 ```
 
 > Live is back to v1 http://bookinfo.local/productpage
-
 > Test is back to v2 http://test.bookinfo.local/productpage
