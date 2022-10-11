@@ -25,10 +25,10 @@ resource "helm_release" "argocd" {
     "${file("values.yaml")}"
   ]
 
-  set {
-    name = "crds.keep"
-    value = false
-  }
+  # set {
+  #   name = "crds.keep"
+  #   value = false
+  # }
 
   set_sensitive {
     name  = "configs.secret.argocdServerAdminPassword"

@@ -1101,7 +1101,7 @@ server:
 
   ingress:
     # -- Enable an ingress resource for the Argo CD server
-    enabled: false
+    enabled: true
     # -- Additional ingress annotations
     annotations: {}
     # -- Additional ingress labels
@@ -1114,8 +1114,8 @@ server:
     ## Hostnames must be provided if Ingress is enabled.
     ## Secrets must be manually created in the namespace
     hosts:
-      []
-      # - argocd.example.com
+      # []
+      - argocd.example.local
 
     # -- List of ingress paths
     paths:
